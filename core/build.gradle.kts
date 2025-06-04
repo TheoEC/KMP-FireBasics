@@ -8,9 +8,6 @@ plugins {
 }
 
 kotlin {
-//    compilerOptions {
-//        freeCompilerArgs.add("-Xexpect-actual-classes")
-//    }
     targets.configureEach {
         compilations.configureEach {
             compileTaskProvider.configure {
@@ -73,5 +70,25 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+}
+
+publishing {
+    publications {
+        withType<MavenPublication>().all {
+            groupId = "com.github.TheoEC.KMP-FireBasics"
+            version = "1.0.2"
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHub"
+            url = uri("https://maven.pkg.github.com/TheoEC/KMP-FireBasics")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: ""
+                password = project.findProperty("gpr.key") as String? ?: ""
+            }
+        }
     }
 }

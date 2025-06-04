@@ -68,3 +68,23 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 }
+
+publishing {
+    publications {
+        withType<MavenPublication>().all {
+            groupId = "com.github.TheoEC.KMP-FireBasics"
+            version = "1.0.2"
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHub"
+            url = uri("https://maven.pkg.github.com/TheoEC/KMP-FireBasics")
+//            credentials {
+//                username = project.findProperty("gpr.user") as String? ?: ""
+//                password = project.findProperty("gpr.key") as String? ?: ""
+//            }
+        }
+    }
+}
