@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     id("maven-publish")
     id("com.vanniktech.maven.publish") version "0.30.0"
+    signing
 }
 
 kotlin {
@@ -121,4 +122,11 @@ mavenPublishing {
             developerConnection = "scm:git:ssh://git@github.com/TheoEC/KMP-FireBasics.git"
         }
     }
+}
+
+signing {
+    val signingKey: String? by project
+    val signingPassword: String? by project
+    useInMemoryPgpKeys(signingKey, signingPassword)
+    sign(publishing.publications)
 }
