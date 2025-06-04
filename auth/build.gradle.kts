@@ -4,7 +4,11 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.kotlinCocoapods)
     alias(libs.plugins.androidLibrary)
+    id("maven-publish")
 }
+
+group = "com.theoec"
+version = "1.0"
 
 kotlin {
     androidTarget {
