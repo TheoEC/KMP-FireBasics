@@ -113,8 +113,8 @@ mavenPublishing {
 }
 
 signing {
-    val signingKey: String? by project
-    val signingPassword: String? by project
-    useInMemoryPgpKeys(signingKey, signingPassword)
+    val signingInMemoryKey: String? by project
+    val signingInMemoryKeyPassword: String? by project
+    useInMemoryPgpKeys(signingInMemoryKey, signingInMemoryKeyPassword)
     sign(publishing.publications)
 }
