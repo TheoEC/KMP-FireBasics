@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -5,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlinCocoapods)
     alias(libs.plugins.androidLibrary)
     id("maven-publish")
+    id("com.vanniktech.maven.publish") version "0.30.0"
 }
 
 kotlin {
@@ -69,22 +71,54 @@ android {
     }
 }
 
-publishing {
-    publications {
-        withType<MavenPublication>().all {
-            groupId = "com.github.TheoEC.KMP-FireBasics"
-            version = "1.0.2"
-        }
-    }
+//publishing {
+//    publications {
+//        withType<MavenPublication>().all {
+//            groupId = "com.github.TheoEC.KMP-FireBasics"
+//            version = "1.0.2"
+//        }
+//    }
+//
+//    repositories {
+//        maven {
+//            name = "GitHub"
+//            url = uri("https://maven.pkg.github.com/TheoEC/KMP-FireBasics")
+////            credentials {
+////                username = project.findProperty("gpr.user") as String? ?: ""
+////                password = project.findProperty("gpr.key") as String? ?: ""
+////            }
+//        }
+//    }
+//}
 
-    repositories {
-        maven {
-            name = "GitHub"
-            url = uri("https://maven.pkg.github.com/TheoEC/KMP-FireBasics")
-//            credentials {
-//                username = project.findProperty("gpr.user") as String? ?: ""
-//                password = project.findProperty("gpr.key") as String? ?: ""
-//            }
+// <module directory>/build.gradle.kts
+
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    signAllPublications()
+
+    coordinates("com.github.TheoEC", "kmp-firebasics", "1.0.0")
+
+    pom {
+        name = "KMP Firebasics"
+        description = "Kotlin Multiplatform Firebase tools"
+        url = "https://github.com/TheoEC/KMP-FireBasics"
+        licenses {
+            license {
+                name = "Apache License 2.0"
+                url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+        }
+        developers {
+            developer {
+                id = "theoec"
+                name = "Theo Moura"
+            }
+        }
+        scm {
+            url = "https://github.com/TheoEC/KMP-FireBasics"
+            connection = "scm:git:git://github.com/TheoEC/KMP-FireBasics.git"
+            developerConnection = "scm:git:ssh://git@github.com/TheoEC/KMP-FireBasics.git"
         }
     }
 }
