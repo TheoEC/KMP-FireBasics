@@ -44,10 +44,10 @@ kotlin {
             isStatic = true
         }
 //            noPodspec()
-            pod("FirebaseCore") {
-                version = "11.14.0"
-                extraOpts += listOf("-compiler-option", "-fmodules")
-            }
+//            pod("FirebaseCore") {
+//                version = "11.14.0"
+//                extraOpts += listOf("-compiler-option", "-fmodules")
+//            }
     }
 
     sourceSets {
