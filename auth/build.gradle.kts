@@ -50,7 +50,7 @@ kotlin {
 
 //        noPodspec()
         pod("FirebaseAuth") {
-            version = "11.14.0"
+            version = "11.12.0"
             extraOpts += listOf("-compiler-option", "-fmodules")
         }
     }
