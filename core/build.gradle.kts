@@ -43,7 +43,7 @@ kotlin {
             baseName = "core"
             isStatic = true
         }
-            noPodspec()
+//            noPodspec()
             pod("FirebaseCore") {
                 version = "11.14.0"
                 extraOpts += listOf("-compiler-option", "-fmodules")
