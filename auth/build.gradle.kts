@@ -86,7 +86,7 @@ mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
     signAllPublications()
 
-    coordinates("com.github.TheoEC", "kmp-firebasics", "1.0.0")
+    coordinates("io.github.theoec", "kmp-firebasics-auth", "1.0.0")
 
     pom {
         name = "KMP Firebasics"
@@ -113,8 +113,8 @@ mavenPublishing {
 }
 
 signing {
-    val signingInMemoryKey: String? by project
-    val signingInMemoryKeyPassword: String? by project
+    val signingInMemoryKey: String by project
+    val signingInMemoryKeyPassword: String by project
     useInMemoryPgpKeys(signingInMemoryKey, signingInMemoryKeyPassword)
     sign(publishing.publications)
 }

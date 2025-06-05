@@ -76,31 +76,11 @@ android {
     }
 }
 
-//publishing {
-//    publications {
-//        withType<MavenPublication>().all {
-//            groupId = "com.github.TheoEC.KMP-FireBasics"
-//            version = "1.0.2"
-//        }
-//    }
-//
-//    repositories {
-//        maven {
-//            name = "GitHub"
-//            url = uri("https://maven.pkg.github.com/TheoEC/KMP-FireBasics")
-//            credentials {
-//                username = project.findProperty("gpr.user") as String? ?: ""
-//                password = project.findProperty("gpr.key") as String? ?: ""
-//            }
-//        }
-//    }
-//}
-
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
     signAllPublications()
 
-    coordinates("com.github.TheoEC", "kmp-firebasics", "1.0.0")
+    coordinates("io.github.theoec", "kmp-firebasics-core", "1.0.0")
 
     pom {
         name = "KMP Firebasics"
@@ -127,8 +107,8 @@ mavenPublishing {
 }
 
 signing {
-    val signingInMemoryKey: String? by project
-    val signingInMemoryKeyPassword: String? by project
+    val signingInMemoryKey: String by project
+    val signingInMemoryKeyPassword: String by project
     useInMemoryPgpKeys(signingInMemoryKey, signingInMemoryKeyPassword)
     sign(publishing.publications)
 }
